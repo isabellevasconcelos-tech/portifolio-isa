@@ -1,9 +1,28 @@
 /* =============================================
-   Custom Styles - Portfolio Isa
+   Custom Styles - Portfolio Isa Lopes
+   Theme: Medieval Dark + Gold
    ============================================= */
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Parchment texture background */
+.parchment-bg {
+  background-color: #1A0F2E;
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+/* Gold glow effect */
+.gold-glow {
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.3), 0 0 40px rgba(212, 175, 55, 0.1);
+}
+
+.gold-glow-box {
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.15), 0 0 30px rgba(212, 175, 55, 0.05);
 }
 
 /* Fade-in animation for scroll reveal */
@@ -16,16 +35,6 @@ html {
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* Typing effect */
-.typing-cursor::after {
-  content: '|';
-  animation: blink 1s step-end infinite;
-}
-
-@keyframes blink {
-  50% { opacity: 0; }
 }
 
 /* Proficiency bar fill */
@@ -44,21 +53,21 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #1A0F2E;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #94a3b8;
+  background: #D4AF37;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #64748b;
+  background: #E8C84A;
 }
 
 /* Loading skeleton pulse */
 .skeleton {
-  background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+  background: linear-gradient(90deg, #1A0F2E 25%, #251A3D 50%, #1A0F2E 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
 }
@@ -68,22 +77,55 @@ html {
   100% { background-position: 200% 0; }
 }
 
-/* Gradient text */
-.gradient-text {
-  background: linear-gradient(135deg, #6366f1, #ec4899);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Hero background pattern */
-.hero-pattern {
-  background-image: radial-gradient(circle at 1px 1px, rgba(99, 102, 241, 0.1) 1px, transparent 0);
-  background-size: 40px 40px;
+/* Star twinkle animation */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
 }
 
 /* Nav blur effect */
 .nav-blur {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+}
+
+/* Gold gradient text */
+.gradient-text-gold {
+  background: linear-gradient(135deg, #D4AF37, #E8C84A, #D4AF37);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Brush stroke decoration */
+.brush-stroke {
+  position: relative;
+}
+
+.brush-stroke::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+  border-radius: 2px;
+}
+
+/* Hero decorative glow */
+.hero-glow {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Form input focus with gold */
+.form-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
 }

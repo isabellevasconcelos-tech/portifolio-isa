@@ -1,15 +1,18 @@
 /* =============================================
    Reusable Component Styles
+   Theme: Medieval Dark + Gold
    ============================================= */
 
 /* Project Card */
 .project-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(212, 175, 55, 0.15);
 }
 
 .project-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
+  border-color: rgba(212, 175, 55, 0.3);
 }
 
 .project-card img {
@@ -23,11 +26,13 @@
 /* Blog Card */
 .blog-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(212, 175, 55, 0.15);
 }
 
 .blog-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.1);
+  border-color: rgba(212, 175, 55, 0.3);
 }
 
 /* Badge */
@@ -37,8 +42,9 @@
   border-radius: 9999px;
   font-size: 0.75rem;
   font-weight: 500;
-  background: rgba(99, 102, 241, 0.1);
-  color: #6366f1;
+  background: rgba(212, 175, 55, 0.15);
+  color: #D4AF37;
+  border: 1px solid rgba(212, 175, 55, 0.2);
 }
 
 /* Toast notification */
@@ -57,39 +63,6 @@
   }
 }
 
-/* Modal */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 50;
-  animation: fadeIn 0.2s ease-out;
-}
-
-.modal-content {
-  background: white;
-  border-radius: 1rem;
-  padding: 2rem;
-  max-width: 600px;
-  width: 90%;
-  max-height: 90vh;
-  overflow-y: auto;
-  animation: scaleIn 0.2s ease-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes scaleIn {
-  from { transform: scale(0.95); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
 /* Social link icons */
 .social-link {
   transition: transform 0.2s ease, color 0.2s ease;
@@ -97,12 +70,6 @@
 
 .social-link:hover {
   transform: scale(1.2);
-}
-
-/* Contact form input focus */
-.form-input:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
 }
 
 /* Back to top button */
@@ -115,4 +82,22 @@
 .back-to-top.show {
   opacity: 1;
   pointer-events: auto;
+}
+
+/* Gold section divider star */
+.section-star {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 2rem;
+}
+
+.section-star::before,
+.section-star::after {
+  content: '';
+  flex: 1;
+  max-width: 100px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
 }

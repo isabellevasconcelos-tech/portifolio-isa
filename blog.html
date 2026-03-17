@@ -3,73 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog - Isabela</title>
-  <meta name="description" content="Blog de Isabela - Artigos sobre tecnologia e desenvolvimento">
+  <title>Blog - Isa Lopes</title>
+  <meta name="description" content="Blog de Isa Lopes - Artigos sobre design e tecnologia">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          colors: { primary: '#6366f1', 'primary-dark': '#4f46e5', secondary: '#ec4899', accent: '#8b5cf6' },
-          fontFamily: { sans: ['Inter', 'sans-serif'], heading: ['Poppins', 'sans-serif'] }
+          colors: { dark: '#1A0F2E', night: '#0D1B2A', gold: '#D4AF37', 'gold-light': '#E8C84A', soft: '#F5F5F5' },
+          fontFamily: { heading: ['Cinzel', 'serif'], body: ['Montserrat', 'sans-serif'] }
         }
       }
     }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="stylesheet" href="css/custom.css">
   <link rel="stylesheet" href="css/components.css">
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="bg-dark text-soft font-body">
 
   <!-- Navigation -->
-  <nav class="bg-white shadow-sm">
+  <nav class="bg-dark/90 nav-blur border-b border-gold/20">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="flex items-center justify-between h-16">
-        <a href="index.html" class="text-xl font-heading font-bold gradient-text">Isa</a>
+        <a href="index.html" class="text-xl font-heading font-bold text-gold">Isa Lopes</a>
         <div class="flex items-center gap-6">
-          <a href="index.html" class="text-sm text-gray-600 hover:text-primary transition-colors">Portfolio</a>
-          <a href="blog.html" class="text-sm text-primary font-medium">Blog</a>
+          <a href="index.html" class="text-sm text-soft/70 hover:text-gold transition-colors font-medium">Portfolio</a>
+          <a href="blog.html" class="text-sm text-gold font-medium">Blog</a>
         </div>
       </div>
     </div>
   </nav>
 
   <!-- Blog Header -->
-  <header class="bg-white border-b py-12">
+  <header class="bg-night border-b border-gold/20 py-12">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
-      <h1 class="text-4xl font-heading font-bold mb-3">
-        <span class="gradient-text">Blog</span>
-      </h1>
-      <p class="text-gray-500">Artigos, tutoriais e reflexoes sobre tecnologia</p>
+      <h1 class="text-4xl font-heading font-bold mb-3 text-gold gold-glow">Blog</h1>
+      <p class="text-soft/50">Artigos, tutoriais e reflexoes sobre design e tecnologia</p>
     </div>
   </header>
 
   <!-- Blog Posts Grid -->
   <main class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
     <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Loaded by JS -->
     </div>
 
     <div id="load-more-container" class="text-center mt-8 hidden">
       <button id="load-more-btn"
-        class="bg-white border border-gray-300 text-gray-600 hover:border-primary hover:text-primary px-6 py-2.5 rounded-lg font-medium transition-colors">
+        class="border border-gold/30 text-gold hover:bg-gold hover:text-dark px-6 py-2.5 rounded-lg font-medium transition-colors">
         Carregar mais
       </button>
     </div>
 
-    <div id="blog-empty" class="hidden text-center py-20 text-gray-400">
+    <div id="blog-empty" class="hidden text-center py-20 text-soft/30">
       <i data-lucide="pen-line" class="w-12 h-12 mx-auto mb-3 opacity-50"></i>
-      <p>Nenhum post publicado ainda. Volte em breve!</p>
+      <p class="font-heading">Nenhum post publicado ainda. Volte em breve!</p>
     </div>
   </main>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-400 py-8">
+  <footer class="bg-night border-t border-gold/20 text-soft/50 py-8">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
-      <p class="text-sm">&copy; 2026 Isabela. Todos os direitos reservados.</p>
+      <p class="text-sm font-heading">&copy; 2026 Isa Lopes. Todos os direitos reservados.</p>
     </div>
   </footer>
 
