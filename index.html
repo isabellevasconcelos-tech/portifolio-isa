@@ -179,11 +179,117 @@
   <!-- Projects Section -->
   <section id="projects" class="py-20 bg-dark relative">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <h2 class="text-3xl font-heading font-bold text-center mb-12 fade-in">
-        Meus <span class="text-gold">Projetos</span>
+      <h2 class="text-3xl font-heading font-bold text-center mb-4 fade-in">
+        <span class="text-gold">&#128188;</span> <span class="text-gold">Projetos</span>
       </h2>
+      <p class="text-soft/60 text-center max-w-2xl mx-auto mb-10 fade-in">
+        Desenvolvo projetos proprios e conceituais que demonstram minha capacidade criativa e tecnica, incluindo:
+      </p>
+
+      <!-- Project highlights -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12 fade-in">
+        <div class="bg-night/60 border border-gold/15 rounded-xl p-5 flex items-start gap-3">
+          <span class="text-gold mt-1">&#10024;</span>
+          <p class="text-soft/70 text-sm">Aplicativos com identidade visual personalizada</p>
+        </div>
+        <div class="bg-night/60 border border-gold/15 rounded-xl p-5 flex items-start gap-3">
+          <span class="text-gold mt-1">&#10024;</span>
+          <p class="text-soft/70 text-sm">Interfaces modernas e intuitivas</p>
+        </div>
+        <div class="bg-night/60 border border-gold/15 rounded-xl p-5 flex items-start gap-3">
+          <span class="text-gold mt-1">&#10024;</span>
+          <p class="text-soft/70 text-sm">Prototipos de experiencias digitais</p>
+        </div>
+      </div>
+
+      <!-- Featured: Enchanted Brush -->
+      <div class="max-w-4xl mx-auto mb-12 fade-in">
+        <div class="bg-gradient-to-br from-night to-dark border border-gold/25 rounded-2xl p-8 md:p-10 relative overflow-hidden gold-glow-box">
+          <div class="absolute top-0 right-0 w-40 h-40 bg-gold/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+          <div class="absolute bottom-0 left-0 w-28 h-28 bg-gold/5 rounded-full translate-y-1/2 -translate-x-1/2"></div>
+          <div class="relative flex flex-col md:flex-row items-center gap-8">
+            <div class="flex-shrink-0">
+              <div class="w-24 h-24 rounded-2xl bg-gold/10 border border-gold/30 flex items-center justify-center">
+                <i data-lucide="wand-sparkles" class="w-10 h-10 text-gold"></i>
+              </div>
+            </div>
+            <div class="text-center md:text-left flex-1">
+              <span class="text-gold/50 text-xs tracking-widest uppercase font-body">Projeto Destaque</span>
+              <h3 class="font-heading font-bold text-2xl text-soft mt-1 mb-2 gold-glow">Enchanted Brush</h3>
+              <p class="text-soft/50 mb-4">Aplicativo com identidade visual unica e experiencia digital encantadora.</p>
+              <a href="#" id="enchanted-brush-link"
+                class="inline-flex items-center gap-2 bg-gold hover:bg-gold-light text-dark font-bold px-6 py-2.5 rounded-lg transition-colors">
+                <i data-lucide="external-link" class="w-4 h-4"></i>
+                Ver Projeto
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dynamic projects from Supabase -->
       <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Content loaded by JS -->
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent"></div>
+  </section>
+
+  <!-- Process Section -->
+  <section id="process" class="py-20 bg-night relative">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl font-heading font-bold text-center mb-12 fade-in">
+        <span class="text-gold">&#128640;</span> Meu <span class="text-gold">Processo</span>
+      </h2>
+      <div class="max-w-3xl mx-auto fade-in">
+        <div class="relative">
+          <!-- Vertical gold line -->
+          <div class="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-gold/50 via-gold/20 to-transparent hidden md:block"></div>
+
+          <!-- Step 1 -->
+          <div class="flex items-start gap-6 mb-10">
+            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gold/10 border border-gold/40 flex items-center justify-center z-10">
+              <span class="text-gold font-heading font-bold">1</span>
+            </div>
+            <div class="pt-2">
+              <h3 class="font-heading font-semibold text-soft text-lg mb-1">Entendimento</h3>
+              <p class="text-soft/50">Entendimento da ideia e objetivo do projeto</p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="flex items-start gap-6 mb-10">
+            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gold/10 border border-gold/40 flex items-center justify-center z-10">
+              <span class="text-gold font-heading font-bold">2</span>
+            </div>
+            <div class="pt-2">
+              <h3 class="font-heading font-semibold text-soft text-lg mb-1">Planejamento</h3>
+              <p class="text-soft/50">Planejamento e criacao do design</p>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="flex items-start gap-6 mb-10">
+            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gold/10 border border-gold/40 flex items-center justify-center z-10">
+              <span class="text-gold font-heading font-bold">3</span>
+            </div>
+            <div class="pt-2">
+              <h3 class="font-heading font-semibold text-soft text-lg mb-1">Refinamento</h3>
+              <p class="text-soft/50">Ajustes e refinamento visual</p>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="flex items-start gap-6">
+            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gold border border-gold flex items-center justify-center z-10">
+              <span class="text-dark font-heading font-bold">4</span>
+            </div>
+            <div class="pt-2">
+              <h3 class="font-heading font-semibold text-gold text-lg mb-1">Entrega</h3>
+              <p class="text-soft/50">Entrega final com foco na experiencia do usuario</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent"></div>
