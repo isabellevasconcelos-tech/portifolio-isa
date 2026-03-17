@@ -172,8 +172,12 @@ function renderHero(profile) {
       ${photoHTML}
     </div>
     <div class="text-center md:text-left flex-1 relative">
-      <p class="text-gold/70 font-body text-sm tracking-widest uppercase mb-3 hero-subtitle">Portfolio</p>
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-soft mb-3 gold-glow hero-name">
+      <!-- Ghost name behind (blurred gold duplicate) -->
+      <div class="hidden md:block absolute -top-4 -left-2 pointer-events-none select-none" aria-hidden="true">
+        <span class="text-5xl lg:text-7xl font-heading font-bold text-gold/10 blur-sm">${sanitizeHTML(profile.full_name)}</span>
+      </div>
+      <p class="text-gold/70 font-body text-sm tracking-widest uppercase mb-3 hero-subtitle relative">Portfolio</p>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-soft mb-3 gold-glow hero-name relative">
         ${sanitizeHTML(profile.full_name)}
       </h1>
       <p class="text-xl md:text-2xl text-gold font-heading font-normal mb-3 hero-subtitle">${sanitizeHTML(profile.title)}</p>
@@ -212,7 +216,7 @@ function renderAbout(profile) {
 
   container.innerHTML = `
     <div class="flex flex-col md:flex-row items-center gap-10 max-w-5xl mx-auto">
-      <div class="flex-1 text-center md:text-left order-2 md:order-1">
+      <div class="flex-1 text-center md:text-left order-2 md:order-1 anim-surgir">
         <div class="flex items-center gap-2 justify-center md:justify-start mb-4">
           <span class="text-gold text-lg">&#10024;</span>
           <h3 class="text-gold font-heading text-lg font-semibold">Sobre mim</h3>
@@ -220,7 +224,7 @@ function renderAbout(profile) {
         ${profile.bio ? `<p class="text-soft/80 leading-relaxed mb-4">${sanitizeHTML(profile.bio)}</p>` : ''}
         ${profile.description ? `<p class="text-soft/50 leading-relaxed">${sanitizeHTML(profile.description)}</p>` : ''}
       </div>
-      <div class="flex-shrink-0 order-1 md:order-2">
+      <div class="flex-shrink-0 order-1 md:order-2 anim-slide-right">
         ${aboutPhotoHTML}
       </div>
     </div>
@@ -395,6 +399,20 @@ function initBackToTop() {
 
 // ---- Scroll Animations ----
 function initScrollAnimations() {
+  const animSelectors = [
+    '.fade-in',
+    '.anim-surgir',
+    '.anim-slide-right',
+    '.anim-slide-left',
+    '.anim-slide-up',
+    '.anim-desvanecer',
+    '.anim-cta-slow',
+    '.anim-btn-slide',
+    '.process-step',
+    '.stagger-children'
+  ];
+  const selectorString = animSelectors.join(',');
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -406,10 +424,12 @@ function initScrollAnimations() {
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  document.querySelectorAll(selectorString).forEach(el => observer.observe(el));
 
   const bodyObserver = new MutationObserver(() => {
-    document.querySelectorAll('.fade-in:not(.visible)').forEach(el => observer.observe(el));
+    document.querySelectorAll(selectorString).forEach(el => {
+      if (!el.classList.contains('visible')) observer.observe(el);
+    });
   });
   bodyObserver.observe(document.body, { childList: true, subtree: true });
 }

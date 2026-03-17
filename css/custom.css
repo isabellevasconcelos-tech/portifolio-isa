@@ -111,13 +111,108 @@ html {
 .stagger-children .fade-child {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .stagger-children.visible .fade-child:nth-child(1) { transition-delay: 0.0s; opacity: 1; transform: translateY(0); }
-.stagger-children.visible .fade-child:nth-child(2) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
-.stagger-children.visible .fade-child:nth-child(3) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
-.stagger-children.visible .fade-child:nth-child(4) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+.stagger-children.visible .fade-child:nth-child(2) { transition-delay: 0.15s; opacity: 1; transform: translateY(0); }
+.stagger-children.visible .fade-child:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+.stagger-children.visible .fade-child:nth-child(4) { transition-delay: 0.45s; opacity: 1; transform: translateY(0); }
+
+/* ---- SECTION-LEVEL ANIMATIONS (surgir / deslizar / desvanecer) ---- */
+
+/* Surgir (fade + slide up) */
+.anim-surgir {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.anim-surgir.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Deslizar from right */
+.anim-slide-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.anim-slide-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Deslizar from left */
+.anim-slide-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.anim-slide-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Deslizar from bottom (for mockups) */
+.anim-slide-up {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.anim-slide-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Desvanecer (slow fade only) */
+.anim-desvanecer {
+  opacity: 0;
+  transition: opacity 1.2s ease-out;
+}
+
+.anim-desvanecer.visible {
+  opacity: 1;
+}
+
+/* Process steps stagger */
+.process-step {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.process-step.visible { opacity: 1; transform: translateY(0); }
+.process-step[data-delay="0"] { transition-delay: 0.0s; }
+.process-step[data-delay="1"] { transition-delay: 0.2s; }
+.process-step[data-delay="2"] { transition-delay: 0.4s; }
+.process-step[data-delay="3"] { transition-delay: 0.6s; }
+
+/* Contact CTA slow fade */
+.anim-cta-slow {
+  opacity: 0;
+  transition: opacity 1.5s ease-out;
+}
+
+.anim-cta-slow.visible {
+  opacity: 1;
+}
+
+/* Contact button slide up */
+.anim-btn-slide {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease-out 0.4s, transform 0.7s ease-out 0.4s;
+}
+
+.anim-btn-slide.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* ---- BACKGROUND EFFECTS ---- */
 

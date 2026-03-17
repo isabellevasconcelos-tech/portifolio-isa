@@ -241,13 +241,13 @@
       <h2 class="text-3xl font-heading font-bold text-center mb-12 fade-in">
         <span class="text-gold">&#128640;</span> Meu <span class="text-gold">Processo</span>
       </h2>
-      <div class="max-w-3xl mx-auto fade-in">
-        <div class="relative">
+      <div class="max-w-3xl mx-auto">
+        <div class="relative" id="process-steps">
           <!-- Vertical gold line -->
           <div class="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-gold/50 via-gold/20 to-transparent hidden md:block"></div>
 
           <!-- Step 1 -->
-          <div class="flex items-start gap-6 mb-10">
+          <div class="flex items-start gap-6 mb-10 process-step" data-delay="0">
             <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gold/10 border border-gold/40 flex items-center justify-center z-10">
               <span class="text-gold font-heading font-bold">1</span>
             </div>
@@ -258,7 +258,7 @@
           </div>
 
           <!-- Step 2 -->
-          <div class="flex items-start gap-6 mb-10">
+          <div class="flex items-start gap-6 mb-10 process-step" data-delay="1">
             <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gold/10 border border-gold/40 flex items-center justify-center z-10">
               <span class="text-gold font-heading font-bold">2</span>
             </div>
@@ -269,7 +269,7 @@
           </div>
 
           <!-- Step 3 -->
-          <div class="flex items-start gap-6 mb-10">
+          <div class="flex items-start gap-6 mb-10 process-step" data-delay="2">
             <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gold/10 border border-gold/40 flex items-center justify-center z-10">
               <span class="text-gold font-heading font-bold">3</span>
             </div>
@@ -280,7 +280,7 @@
           </div>
 
           <!-- Step 4 -->
-          <div class="flex items-start gap-6">
+          <div class="flex items-start gap-6 process-step" data-delay="3">
             <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gold border border-gold flex items-center justify-center z-10">
               <span class="text-dark font-heading font-bold">4</span>
             </div>
@@ -352,21 +352,21 @@
   <section id="contact" class="py-20 bg-night relative">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <!-- CTA -->
-      <div class="text-center mb-16 fade-in">
-        <h2 class="text-3xl font-heading font-bold mb-4">
+      <div class="text-center mb-16 anim-cta-slow">
+        <h2 class="text-3xl font-heading font-bold mb-4 anim-desvanecer">
           <span class="text-gold">&#128172;</span> Vamos trabalhar <span class="text-gold">juntos?</span>
         </h2>
-        <p class="text-soft/60 max-w-2xl mx-auto mb-2">
+        <p class="text-soft/60 max-w-2xl mx-auto mb-2 anim-surgir">
           Estou disponivel para criar sites e interfaces personalizadas, sempre com foco em qualidade e originalidade.
         </p>
-        <p class="text-soft/50 max-w-2xl mx-auto">
+        <p class="text-soft/50 max-w-2xl mx-auto anim-surgir">
           Se voce busca um projeto visual <span class="text-gold font-semibold">unico e bem pensado</span>, entre em contato comigo.
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
         <!-- Contact Info -->
-        <div class="fade-in">
+        <div class="anim-slide-left">
           <h3 class="font-heading font-bold text-xl text-gold mb-6 flex items-center gap-2">
             <span>&#128242;</span> Contato
           </h3>
@@ -407,7 +407,7 @@
         </div>
 
         <!-- Contact Form -->
-        <div class="fade-in">
+        <div class="anim-slide-right">
           <h3 class="font-heading font-bold text-xl text-gold mb-6 flex items-center gap-2">
             <i data-lucide="send" class="w-5 h-5"></i> Envie uma mensagem
           </h3>
