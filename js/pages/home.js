@@ -131,10 +131,29 @@ function renderAbout(profile) {
   const container = document.getElementById('about-content');
   if (!container) return;
 
+  const aboutPhotoHTML = profile.photo_url
+    ? `<img src="${sanitizeHTML(profile.photo_url)}" alt="${sanitizeHTML(profile.full_name)}"
+         class="w-64 h-72 md:w-80 md:h-96 object-cover rounded-2xl border border-gold/30 gold-glow-box">`
+    : `<div class="w-64 h-72 md:w-80 md:h-96 rounded-2xl bg-gradient-to-br from-night to-dark border border-gold/30 gold-glow-box flex items-center justify-center">
+         <div class="text-center">
+           <i data-lucide="palette" class="w-16 h-16 text-gold/30 mx-auto mb-3"></i>
+           <p class="text-gold/40 font-heading text-sm">Isabelle Lopes</p>
+         </div>
+       </div>`;
+
   container.innerHTML = `
-    <div class="max-w-3xl mx-auto text-center">
-      ${profile.bio ? `<p class="text-lg text-soft/80 mb-4 font-light">${sanitizeHTML(profile.bio)}</p>` : ''}
-      ${profile.description ? `<p class="text-soft/50 leading-relaxed">${sanitizeHTML(profile.description)}</p>` : ''}
+    <div class="flex flex-col md:flex-row items-center gap-10 max-w-5xl mx-auto">
+      <div class="flex-1 text-center md:text-left order-2 md:order-1">
+        <div class="flex items-center gap-2 justify-center md:justify-start mb-4">
+          <span class="text-gold text-lg">&#10024;</span>
+          <h3 class="text-gold font-heading text-lg font-semibold">Sobre mim</h3>
+        </div>
+        ${profile.bio ? `<p class="text-soft/80 leading-relaxed mb-4">${sanitizeHTML(profile.bio)}</p>` : ''}
+        ${profile.description ? `<p class="text-soft/50 leading-relaxed">${sanitizeHTML(profile.description)}</p>` : ''}
+      </div>
+      <div class="flex-shrink-0 order-1 md:order-2">
+        ${aboutPhotoHTML}
+      </div>
     </div>
   `;
 }
