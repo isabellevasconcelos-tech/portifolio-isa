@@ -43,16 +43,41 @@ function initStars() {
   resize();
   window.addEventListener('resize', resize);
 
+  // Stars (small twinkling dots)
   const stars = [];
-  const count = 120;
-
-  for (let i = 0; i < count; i++) {
+  for (let i = 0; i < 150; i++) {
     stars.push({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      size: Math.random() * 1.5 + 0.5,
-      speed: Math.random() * 0.5 + 0.2,
-      opacity: Math.random() * 0.7 + 0.3,
+      size: Math.random() * 1.5 + 0.3,
+      speed: Math.random() * 0.4 + 0.1,
+      opacity: Math.random() * 0.15 + 0.05,
+      phase: Math.random() * Math.PI * 2
+    });
+  }
+
+  // Sparkles (bigger, brighter, rarer)
+  const sparkles = [];
+  for (let i = 0; i < 25; i++) {
+    sparkles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: Math.random() * 2 + 1.5,
+      speed: Math.random() * 0.3 + 0.1,
+      opacity: Math.random() * 0.15 + 0.05,
+      phase: Math.random() * Math.PI * 2
+    });
+  }
+
+  // Glow orbs (large, very subtle)
+  const glows = [];
+  for (let i = 0; i < 5; i++) {
+    glows.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: Math.random() * 80 + 40,
+      speed: Math.random() * 0.2 + 0.05,
+      opacity: Math.random() * 0.03 + 0.01,
       phase: Math.random() * Math.PI * 2
     });
   }
@@ -61,12 +86,56 @@ function initStars() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     const time = Date.now() * 0.001;
 
+    // Draw glow orbs (very subtle, 10-15% opacity)
+    glows.forEach(glow => {
+      const pulse = Math.sin(time * glow.speed + glow.phase) * 0.5 + 0.5;
+      const gradient = ctx.createRadialGradient(glow.x, glow.y, 0, glow.x, glow.y, glow.size);
+      gradient.addColorStop(0, `rgba(212, 175, 55, ${glow.opacity * pulse})`);
+      gradient.addColorStop(1, 'rgba(212, 175, 55, 0)');
+      ctx.beginPath();
+      ctx.arc(glow.x, glow.y, glow.size, 0, Math.PI * 2);
+      ctx.fillStyle = gradient;
+      ctx.fill();
+    });
+
+    // Draw stars
     stars.forEach(star => {
-      const twinkle = Math.sin(time * star.speed + star.phase) * 0.3 + 0.7;
+      const twinkle = Math.sin(time * star.speed + star.phase) * 0.4 + 0.6;
       ctx.beginPath();
       ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(212, 175, 55, ${star.opacity * twinkle})`;
       ctx.fill();
+    });
+
+    // Draw sparkles (4-point star shape)
+    sparkles.forEach(sp => {
+      const twinkle = Math.sin(time * sp.speed * 2 + sp.phase) * 0.5 + 0.5;
+      const alpha = sp.opacity * twinkle;
+      const s = sp.size;
+      ctx.save();
+      ctx.translate(sp.x, sp.y);
+      ctx.fillStyle = `rgba(212, 175, 55, ${alpha})`;
+      // Vertical line
+      ctx.beginPath();
+      ctx.moveTo(0, -s);
+      ctx.quadraticCurveTo(0.5, 0, 0, s);
+      ctx.quadraticCurveTo(-0.5, 0, 0, -s);
+      ctx.fill();
+      // Horizontal line
+      ctx.beginPath();
+      ctx.moveTo(-s, 0);
+      ctx.quadraticCurveTo(0, 0.5, s, 0);
+      ctx.quadraticCurveTo(0, -0.5, -s, 0);
+      ctx.fill();
+      // Center glow
+      const g = ctx.createRadialGradient(0, 0, 0, 0, 0, s * 0.8);
+      g.addColorStop(0, `rgba(212, 175, 55, ${alpha * 0.4})`);
+      g.addColorStop(1, 'rgba(212, 175, 55, 0)');
+      ctx.beginPath();
+      ctx.arc(0, 0, s * 0.8, 0, Math.PI * 2);
+      ctx.fillStyle = g;
+      ctx.fill();
+      ctx.restore();
     });
 
     requestAnimationFrame(draw);
@@ -85,8 +154,8 @@ function renderHero(profile) {
 
   const photoHTML = profile.photo_url
     ? `<img src="${sanitizeHTML(profile.photo_url)}" alt="${sanitizeHTML(profile.full_name)}"
-         class="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover border-2 border-gold/40 gold-glow-box">`
-    : `<div class="w-48 h-48 md:w-64 md:h-64 rounded-full bg-gradient-to-br from-dark to-night flex items-center justify-center text-gold text-6xl font-heading font-bold border-2 border-gold/40 gold-glow-box">
+         class="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover border-2 border-gold/40 gold-glow-box hero-photo-float">`
+    : `<div class="w-48 h-48 md:w-64 md:h-64 rounded-full bg-gradient-to-br from-dark to-night flex items-center justify-center text-gold text-6xl font-heading font-bold border-2 border-gold/40 gold-glow-box hero-photo-float">
          ${profile.full_name.charAt(0)}
        </div>`;
 
@@ -99,17 +168,17 @@ function renderHero(profile) {
 
   container.innerHTML = `
     <div class="hero-glow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
-    <div class="flex-shrink-0 order-first md:order-last relative">
+    <div class="flex-shrink-0 order-first md:order-last relative hero-photo">
       ${photoHTML}
     </div>
     <div class="text-center md:text-left flex-1 relative">
-      <p class="text-gold/70 font-body text-sm tracking-widest uppercase mb-3">Portfolio</p>
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-soft mb-3 gold-glow">
+      <p class="text-gold/70 font-body text-sm tracking-widest uppercase mb-3 hero-subtitle">Portfolio</p>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-soft mb-3 gold-glow hero-name">
         ${sanitizeHTML(profile.full_name)}
       </h1>
-      <p class="text-xl md:text-2xl text-gold font-heading font-normal mb-3">${sanitizeHTML(profile.title)}</p>
-      ${profile.subtitle ? `<p class="text-soft/50 italic mb-6 text-lg">"${sanitizeHTML(profile.subtitle)}"</p>` : ''}
-      <div class="flex items-center gap-4 justify-center md:justify-start mb-6">
+      <p class="text-xl md:text-2xl text-gold font-heading font-normal mb-3 hero-subtitle">${sanitizeHTML(profile.title)}</p>
+      ${profile.subtitle ? `<p class="text-soft/50 italic mb-6 text-lg hero-quote">"${sanitizeHTML(profile.subtitle)}"</p>` : ''}
+      <div class="flex items-center gap-4 justify-center md:justify-start mb-6 hero-cta">
         <a href="#contact" class="bg-gold hover:bg-gold-light text-dark px-6 py-2.5 rounded-lg font-bold transition-colors">
           Fale Comigo
         </a>
@@ -119,7 +188,7 @@ function renderHero(profile) {
           </a>
         ` : ''}
       </div>
-      <div class="flex items-center gap-3 justify-center md:justify-start">
+      <div class="flex items-center gap-3 justify-center md:justify-start hero-social">
         ${socialHTML}
       </div>
     </div>

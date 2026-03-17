@@ -1,5 +1,5 @@
 /* =============================================
-   Custom Styles - Portfolio Isa Lopes
+   Custom Styles - Portfolio Isabelle Lopes
    Theme: Medieval Dark + Gold
    ============================================= */
 
@@ -7,12 +7,126 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Parchment texture background */
+/* ---- HERO ANIMATIONS ---- */
+
+/* Name: slide up + fade (delay 0.0, slow) */
+.hero-name {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: heroSlideUp 1.2s ease-out forwards;
+  animation-delay: 0s;
+}
+
+/* Subtitle: fade in (delay 0.4) */
+.hero-subtitle {
+  opacity: 0;
+  animation: heroFadeIn 1s ease-out forwards;
+  animation-delay: 0.4s;
+}
+
+/* Quote: soft fade (delay 0.7) */
+.hero-quote {
+  opacity: 0;
+  animation: heroFadeSoft 1.2s ease-out forwards;
+  animation-delay: 0.7s;
+}
+
+/* CTA buttons: slide up (delay 1.0) */
+.hero-cta {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroSlideUp 0.8s ease-out forwards;
+  animation-delay: 1.0s;
+}
+
+/* Social icons: fade (delay 1.2) */
+.hero-social {
+  opacity: 0;
+  animation: heroFadeIn 0.8s ease-out forwards;
+  animation-delay: 1.2s;
+}
+
+/* Photo: fade + subtle float */
+.hero-photo {
+  opacity: 0;
+  animation: heroPhotoReveal 1.4s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+.hero-photo-float {
+  animation: floatSubtle 6s ease-in-out infinite;
+}
+
+@keyframes heroSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes heroFadeSoft {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroPhotoReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes floatSubtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* ---- SECTION ANIMATIONS (consistent: surgir/deslizar/desvanecer) ---- */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered children animation */
+.stagger-children .fade-child {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.stagger-children.visible .fade-child:nth-child(1) { transition-delay: 0.0s; opacity: 1; transform: translateY(0); }
+.stagger-children.visible .fade-child:nth-child(2) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+.stagger-children.visible .fade-child:nth-child(3) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+.stagger-children.visible .fade-child:nth-child(4) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+
+/* ---- BACKGROUND EFFECTS ---- */
+
+/* Parchment texture */
 .parchment-bg {
   background-color: #1A0F2E;
   background-image:
-    radial-gradient(ellipse at 20% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 20% 50%, rgba(212, 175, 55, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 50%, rgba(212, 175, 55, 0.04) 0%, transparent 50%),
     url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
 }
 
@@ -25,17 +139,23 @@ html {
   box-shadow: 0 0 15px rgba(212, 175, 55, 0.15), 0 0 30px rgba(212, 175, 55, 0.05);
 }
 
-/* Fade-in animation for scroll reveal */
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+/* Hero decorative glow */
+.hero-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  animation: glowPulse 4s ease-in-out infinite;
 }
 
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
 }
+
+/* ---- UTILITIES ---- */
 
 /* Proficiency bar fill */
 .skill-bar-fill {
@@ -77,12 +197,6 @@ html {
   100% { background-position: 200% 0; }
 }
 
-/* Star twinkle animation */
-@keyframes twinkle {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
-}
-
 /* Nav blur effect */
 .nav-blur {
   backdrop-filter: blur(12px);
@@ -95,33 +209,6 @@ html {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-}
-
-/* Brush stroke decoration */
-.brush-stroke {
-  position: relative;
-}
-
-.brush-stroke::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, #D4AF37, transparent);
-  border-radius: 2px;
-}
-
-/* Hero decorative glow */
-.hero-glow {
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
-  pointer-events: none;
 }
 
 /* Form input focus with gold */
