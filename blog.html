@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - Isabela</title>
+  <meta name="description" content="Blog de Isabela - Artigos sobre tecnologia e desenvolvimento">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { primary: '#6366f1', 'primary-dark': '#4f46e5', secondary: '#ec4899', accent: '#8b5cf6' },
+          fontFamily: { sans: ['Inter', 'sans-serif'], heading: ['Poppins', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+  <!-- Navigation -->
+  <nav class="bg-white shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="text-xl font-heading font-bold gradient-text">Isa</a>
+        <div class="flex items-center gap-6">
+          <a href="index.html" class="text-sm text-gray-600 hover:text-primary transition-colors">Portfolio</a>
+          <a href="blog.html" class="text-sm text-primary font-medium">Blog</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Blog Header -->
+  <header class="bg-white border-b py-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+      <h1 class="text-4xl font-heading font-bold mb-3">
+        <span class="gradient-text">Blog</span>
+      </h1>
+      <p class="text-gray-500">Artigos, tutoriais e reflexoes sobre tecnologia</p>
+    </div>
+  </header>
+
+  <!-- Blog Posts Grid -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Loaded by JS -->
+    </div>
+
+    <div id="load-more-container" class="text-center mt-8 hidden">
+      <button id="load-more-btn"
+        class="bg-white border border-gray-300 text-gray-600 hover:border-primary hover:text-primary px-6 py-2.5 rounded-lg font-medium transition-colors">
+        Carregar mais
+      </button>
+    </div>
+
+    <div id="blog-empty" class="hidden text-center py-20 text-gray-400">
+      <i data-lucide="pen-line" class="w-12 h-12 mx-auto mb-3 opacity-50"></i>
+      <p>Nenhum post publicado ainda. Volte em breve!</p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 py-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+      <p class="text-sm">&copy; 2026 Isabela. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/utils/render.js"></script>
+  <script src="js/utils/dates.js"></script>
+  <script src="js/api/blog.js"></script>
+  <script src="js/pages/blog-list.js"></script>
+</body>
+</html>
