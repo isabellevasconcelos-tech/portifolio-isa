@@ -23,6 +23,14 @@ async function initHome() {
     renderHero(profile);
     renderAbout(profile);
     renderFooterSocial(profile.social_links);
+
+    // Set Enchanted Brush link from profile.site_url
+    const brushLink = document.getElementById('enchanted-brush-link');
+    if (brushLink && profile.site_url) {
+      brushLink.href = profile.site_url;
+      brushLink.target = '_blank';
+      brushLink.rel = 'noopener noreferrer';
+    }
   }
 
   renderProjects(projects);
