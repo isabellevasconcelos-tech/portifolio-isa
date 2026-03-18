@@ -193,7 +193,7 @@ function renderHero(profile) {
         </a>
         ${profile.resume_url ? `
           <a href="${sanitizeHTML(profile.resume_url)}" target="_blank" class="border border-gold/50 text-gold hover:bg-gold hover:text-dark px-6 py-2.5 rounded-lg font-medium transition-colors">
-            Curriculo
+            Currículo
           </a>
         ` : ''}
       </div>
