@@ -160,12 +160,9 @@ function renderHero(profile) {
   const container = document.getElementById('hero-content');
   if (!container) return;
 
-  const photoHTML = profile.photo_url
-    ? `<img src="${sanitizeHTML(profile.photo_url)}" alt="${sanitizeHTML(profile.full_name)}"
-         class="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover border-2 border-gold/40 gold-glow-box hero-photo-float">`
-    : `<div class="w-48 h-48 md:w-64 md:h-64 rounded-full bg-gradient-to-br from-dark to-night flex items-center justify-center text-gold text-6xl font-heading font-bold border-2 border-gold/40 gold-glow-box hero-photo-float">
-         ${profile.full_name.charAt(0)}
-       </div>`;
+  const photoSrc = 'https://hduglfjxmumvygnwjikw.supabase.co/storage/v1/object/public/portifolio/BXNU6906.JPG';
+  const photoHTML = `<img src="${photoSrc}" alt="${sanitizeHTML(profile.full_name)}"
+       class="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover border-2 border-gold/40 gold-glow-box hero-photo-float">`;
 
   const socialHTML = (profile.social_links || []).map(link => `
     <a href="${sanitizeHTML(link.url)}" target="_blank" rel="noopener noreferrer"
@@ -212,15 +209,9 @@ function renderAbout(profile) {
   const container = document.getElementById('about-content');
   if (!container) return;
 
-  const aboutPhotoHTML = profile.photo_url
-    ? `<img src="${sanitizeHTML(profile.photo_url)}" alt="${sanitizeHTML(profile.full_name)}"
-         class="w-64 h-72 md:w-80 md:h-96 object-cover rounded-2xl border border-gold/30 gold-glow-box">`
-    : `<div class="w-64 h-72 md:w-80 md:h-96 rounded-2xl bg-gradient-to-br from-night to-dark border border-gold/30 gold-glow-box flex items-center justify-center">
-         <div class="text-center">
-           <i data-lucide="palette" class="w-16 h-16 text-gold/30 mx-auto mb-3"></i>
-           <p class="text-gold/40 font-heading text-sm">Isabelle Lopes</p>
-         </div>
-       </div>`;
+  const aboutPhotoSrc = 'https://hduglfjxmumvygnwjikw.supabase.co/storage/v1/object/public/portifolio/BXNU6906.JPG';
+  const aboutPhotoHTML = `<img src="${aboutPhotoSrc}" alt="${sanitizeHTML(profile.full_name)}"
+       class="w-64 h-72 md:w-80 md:h-96 object-cover rounded-2xl border border-gold/30 gold-glow-box">`;
 
   container.innerHTML = `
     <div class="flex flex-col md:flex-row items-center gap-10 max-w-5xl mx-auto">
