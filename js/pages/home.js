@@ -354,12 +354,16 @@ function initContactForm() {
     btn.innerHTML = '<div class="animate-spin rounded-full h-5 w-5 border-b-2 border-dark"></div> Enviando...';
 
     try {
-      await sendMessage({
-        sender_name: form.sender_name.value.trim(),
-        sender_email: form.sender_email.value.trim(),
-        subject: form.subject.value.trim(),
-        message: form.message.value.trim()
-      });
+      const name = form.sender_name.value.trim();
+      const email = form.sender_email.value.trim();
+      const subject = form.subject.value.trim();
+      const msg = form.message.value.trim();
+
+      await sendMessage({ sender_name: name, sender_email: email, subject, message: msg });
+
+      const whatsappMsg = `Olá! Sou *${name}* (${email}).%0A%0A*Assunto:* ${subject}%0A%0A${msg}`;
+      window.open(`https://wa.me/5551993777539?text=${encodeURIComponent(whatsappMsg)}`, '_blank');
+
       showToast('Mensagem enviada com sucesso!', 'success');
       form.reset();
     } catch (err) {
