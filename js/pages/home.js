@@ -317,18 +317,9 @@ function renderSkills(skills) {
       <h3 class="text-lg font-heading font-bold text-gold/80 mb-4">${sanitizeHTML(category)}</h3>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         ${items.map(skill => `
-          <div class="bg-dark/50 border border-gold/10 rounded-lg p-4">
-            <div class="flex items-center justify-between mb-2">
-              <div class="flex items-center gap-2">
-                ${skill.icon ? `<i class="${sanitizeHTML(skill.icon)} text-gold text-lg"></i>` : ''}
-                <span class="font-medium text-sm text-soft/80">${sanitizeHTML(skill.name)}</span>
-              </div>
-              <span class="text-xs text-gold/60">${skill.proficiency}%</span>
-            </div>
-            <div class="w-full bg-dark rounded-full h-2">
-              <div class="skill-bar-fill bg-gradient-to-r from-gold-dark to-gold rounded-full h-2"
-                   style="--proficiency: ${skill.proficiency}%"></div>
-            </div>
+          <div class="bg-dark/50 border border-gold/10 rounded-lg p-4 flex items-center gap-2">
+            ${skill.icon ? `<i class="${sanitizeHTML(skill.icon)} text-gold text-lg"></i>` : ''}
+            <span class="font-medium text-sm text-soft/80">${sanitizeHTML(skill.name)}</span>
           </div>
         `).join('')}
       </div>
