@@ -287,17 +287,30 @@ function renderSkills(skills) {
   const container = document.getElementById('skills-content');
   if (!container) return;
 
-  if (!skills || skills.length === 0) {
-    container.innerHTML = `
-      <div class="text-center py-12 text-soft/30">
-        <i data-lucide="sparkles" class="w-12 h-12 mx-auto mb-3 opacity-50"></i>
-        <p class="font-heading">Habilidades em breve...</p>
-      </div>
-    `;
-    return;
-  }
+  const defaultSkills = [
+    // Habilidades Criativas (Essenciais)
+    { name: 'Design Gráfico', category: '🎨 Habilidades Criativas (Essenciais)', proficiency: 95 },
+    { name: 'Ilustração Digital', category: '🎨 Habilidades Criativas (Essenciais)', proficiency: 90 },
+    { name: 'Criação de Identidade Visual', category: '🎨 Habilidades Criativas (Essenciais)', proficiency: 90 },
+    { name: 'Direção Criativa', category: '🎨 Habilidades Criativas (Essenciais)', proficiency: 85 },
+    { name: 'Edição de Imagens', category: '🎨 Habilidades Criativas (Essenciais)', proficiency: 90 },
+    { name: 'Storytelling Visual', category: '🎨 Habilidades Criativas (Essenciais)', proficiency: 85 },
+    // Habilidades Digitais / Tech
+    { name: 'Desenvolvimento de Aplicativos', category: '💻 Habilidades Digitais / Tech', proficiency: 75 },
+    { name: 'UI/UX Design', category: '💻 Habilidades Digitais / Tech', proficiency: 90 },
+    { name: 'Prototipagem de Telas', category: '💻 Habilidades Digitais / Tech', proficiency: 85 },
+    { name: 'Noções de Programação', category: '💻 Habilidades Digitais / Tech', proficiency: 65 },
+    // Habilidades Pessoais
+    { name: 'Criatividade', category: '🧠 Habilidades Pessoais', proficiency: 95 },
+    { name: 'Pensamento Inovador', category: '🧠 Habilidades Pessoais', proficiency: 90 },
+    { name: 'Organização', category: '🧠 Habilidades Pessoais', proficiency: 85 },
+    { name: 'Proatividade', category: '🧠 Habilidades Pessoais', proficiency: 90 },
+    { name: 'Comunicação', category: '🧠 Habilidades Pessoais', proficiency: 85 },
+    { name: 'Resolução de Problemas', category: '🧠 Habilidades Pessoais', proficiency: 85 },
+  ];
 
-  const grouped = groupSkillsByCategory(skills);
+  const skillsData = (skills && skills.length > 0) ? skills : defaultSkills;
+  const grouped = groupSkillsByCategory(skillsData);
 
   container.innerHTML = Object.entries(grouped).map(([category, items]) => `
     <div class="mb-8">
