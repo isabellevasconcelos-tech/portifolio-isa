@@ -160,7 +160,7 @@ function renderHero(profile) {
   const container = document.getElementById('hero-content');
   if (!container) return;
 
-  const photoSrc = 'https://hduglfjxmumvygnwjikw.supabase.co/storage/v1/object/public/portifolio/BXNU6906.JPG';
+  const photoSrc = 'https://rkcnhfjgdkdwmoqwvnfn.supabase.co/storage/v1/object/public/portifolio/BXNU6906.JPG';
   const photoHTML = `<img src="${photoSrc}" alt="${sanitizeHTML(profile.full_name)}"
        class="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover border-2 border-gold/40 gold-glow-box hero-photo-float">`;
 
@@ -209,7 +209,7 @@ function renderAbout(profile) {
   const container = document.getElementById('about-content');
   if (!container) return;
 
-  const aboutPhotoSrc = 'https://hduglfjxmumvygnwjikw.supabase.co/storage/v1/object/public/portifolio/BXNU6906.JPG';
+  const aboutPhotoSrc = 'https://rkcnhfjgdkdwmoqwvnfn.supabase.co/storage/v1/object/public/portifolio/BXNU6906.JPG';
   const aboutPhotoHTML = `<img src="${aboutPhotoSrc}" alt="${sanitizeHTML(profile.full_name)}"
        class="w-64 h-72 md:w-80 md:h-96 object-cover rounded-2xl border border-gold/30 gold-glow-box">`;
 
